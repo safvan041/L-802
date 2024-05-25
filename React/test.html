@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">This is a Heading</h1>
+    <button onclick="toggleCase()">Convert to Uppercase</button>
+    <!-- <button onclick="convertToLowerCase()">Convert to Lowercase</button> -->
+
+    <script>
+        function toggleCase() {
+            var heading = document.getElementById('heading');
+            var currentText = heading.textContent;
+            if (currentText === currentText.toUpperCase()) {
+                heading.textContent = currentText.toLowerCase();
+            } else {
+                heading.textContent = currentText.toUpperCase();
+            }
+        }
+    </script>
+</body>
+</html>
