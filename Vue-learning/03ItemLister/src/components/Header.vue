@@ -1,4 +1,5 @@
 <template>
+  <h1>Itelm Lister</h1>
   <header class="app-header">
     <div class="left-section">
       <h2>Welcome {{ userName }}</h2>
@@ -6,7 +7,9 @@
 
     <div class="right-section">
       <button class="logout-btn" @click="logoutUser">Logout</button>
-      <div class="profile-circle" @click="openProfile"></div>
+      <div class="profile-circle" @click="openProfile">
+        <!-- later this will open profile popup -->
+      </div>
     </div>
   </header>
 </template>
@@ -92,5 +95,14 @@ export default {
 
 .profile-circle:hover {
   background-color: #eee;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #3498db;
+  text-align: center;
+  padding: 20px;
 }
 </style>

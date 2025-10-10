@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <header class="app-header">
-      <h1>Item Lister</h1>
-      <AppHeader />
-    </header>
     <main>
       <router-view />
     </main>
@@ -15,8 +11,6 @@
 </template>
 
 <script>
-import AppHeader from './components/Header.vue'
-
 export default {
   name: 'App',
   computed: {
@@ -24,7 +18,6 @@ export default {
       return this.$store?.state?.auth?.loggedInUser || null
     },
   },
-  components: { AppHeader },
 }
 </script>
 
@@ -43,8 +36,8 @@ body {
 
 /* Header */
 .app-header {
-  /* background-color: #3498db; */
-  color: black;
+  background-color: #3498db;
+  color: white;
   padding: 15px 0;
   text-align: center;
   font-weight: 600;

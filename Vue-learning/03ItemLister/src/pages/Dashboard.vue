@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <!-- <AppHeader /> -->
+    <AppHeader />
 
     <div class="actions">
       <button class="btn">Add Item</button>
@@ -11,6 +11,11 @@
 </template>
 
 <script>
+import AppHeader from '../components/Header.vue'
+
+export default {
+  components: { AppHeader },
+}
 </script>
 
 <style scoped>
