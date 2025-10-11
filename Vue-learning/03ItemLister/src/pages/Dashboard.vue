@@ -3,18 +3,25 @@
     <AppHeader />
 
     <div class="actions">
-      <button class="btn">Add Item</button>
-      <button class="btn">List Items</button>
-      <button class="btn">Categories (optional)</button>
+      <button class="btn" @click="showAddItem = true">Add Item</button>
+      <button class="btn" @click="$router.push('/items')">List Items</button>
+      <button class="btn" @click="$router.push('/categories')">Categories (optional)</button>
     </div>
+    <AddItemPopup v-if="showAddItem" @close="showAddItem = false" />
   </div>
 </template>
 
 <script>
 import AppHeader from '../components/Header.vue'
+import AddItemPopup from '../components/AddItemPopup.vue'
 
 export default {
-  components: { AppHeader },
+  components: { AppHeader, AddItemPopup },
+  data() {
+    return {
+      showAddItem: false,
+    }
+  },
 }
 </script>
 

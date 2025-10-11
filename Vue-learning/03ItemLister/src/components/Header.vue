@@ -1,28 +1,35 @@
 <template>
-  <h1>Itelm Lister</h1>
   <header class="app-header">
     <div class="left-section">
-      <h2>Welcome {{ userName }}</h2>
+      <h2>Welcome {{ displayName }}</h2>
     </div>
 
     <div class="right-section">
       <button class="logout-btn" @click="logoutUser">Logout</button>
-      <div class="profile-circle" @click="openProfile">
-        <!-- later this will open profile popup -->
-      </div>
+      <div class="profile-circle" @click="showProfilePopup = true"></div>
     </div>
+
+    <!-- Profile Popup -->
+    <ProfilePopup v-if="showProfilePopup" @close="showProfilePopup = false" />
   </header>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
+import ProfilePopup from './ProfilePopup.vue'
 
 export default {
   name: 'AppHeader',
+  components: { ProfilePopup },
+  data() {
+    return {
+      showProfilePopup: false,
+    }
+  },
   computed: {
-    userName() {
+    displayName() {
       const user = JSON.parse(localStorage.getItem('loggedInUser')) || {}
-      return user.username || 'User'
+      return user.customName || user.username || 'User'
     },
   },
   methods: {
@@ -30,9 +37,6 @@ export default {
     logoutUser() {
       this.logout()
       this.$router.push('/login')
-    },
-    openProfile() {
-      alert('Profile popup coming soon!')
     },
   },
 }
@@ -50,9 +54,9 @@ export default {
   padding: 12px 20px;
   box-sizing: border-box;
   margin-bottom: 30px;
+  position: relative;
 }
 
-/* Left side text */
 .left-section h2 {
   margin: 0;
   font-size: 20px;
@@ -60,14 +64,12 @@ export default {
   color: #2c3e50;
 }
 
-/* Right side layout */
 .right-section {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* Logout button */
 .logout-btn {
   background: #e74c3c;
   border: none;
@@ -83,7 +85,6 @@ export default {
   background: #c0392b;
 }
 
-/* Circle placeholder for profile */
 .profile-circle {
   width: 40px;
   height: 40px;
@@ -95,14 +96,5 @@ export default {
 
 .profile-circle:hover {
   background-color: #eee;
-}
-
-h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-  color: #3498db;
-  text-align: center;
-  padding: 20px;
 }
 </style>
