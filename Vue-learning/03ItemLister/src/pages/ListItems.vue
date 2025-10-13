@@ -38,7 +38,7 @@
     <p v-else class="empty">No items found. Try adding one!</p>
 
     <!-- Add/Edit Popup -->
-    <AddItemPopup v-if="showAddPopup" @close="showAddPopup = false" />
+    <!-- <AddItemPopup v-if="showAddPopup" @close="showAddPopup = false" /> -->
   </div>
 </template>
 
